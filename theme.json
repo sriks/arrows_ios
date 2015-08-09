@@ -1,0 +1,30 @@
+{
+    "typeface": {
+        "heading": {
+            "size": "20"
+        },
+        "subheading": {
+            "font": "HelveticaNeue-Bold",
+            "size": "15"
+        },
+        "body": {
+            "size": "15"
+        },
+        "secondary_body": {
+            "size": "16"
+        }
+        
+    },
+    "colors": {
+        "primary": "#6349CC",
+        "secondary": "#7E6ACC",
+        "ternary": "#CC0032",
+        "vanilla": "#6349CC",
+        "vanilla_light":"#7E6ACC",
+        "favsColor1":"#EFEFEF",
+        "favsColor2":"#ADADAD",
+        "dunken": "#CC0032",
+        "green": "72,219,109",
+        "light_green": "114,219,134"
+    }
+}

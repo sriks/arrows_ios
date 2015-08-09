@@ -1,0 +1,16 @@
+{
+    "colors": {
+        "origin": "#7B4FFF",
+        "top": "#19962E",
+        "right": "#0000FF",
+        "down": "#94003F",
+        "left": "#FFBE00",
+        "life_good": "#176210",
+        "life_ok": "#DCB240",
+        "life_bad": "#DC1E00",
+        "light_black": "#3F3F3F",
+        "negative": "#FF4426",
+        "positive": "#7BBCFF",
+        "point_score": "#10421C"
+    }
+}

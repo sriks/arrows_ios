@@ -1,0 +1,594 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AD0258B01B4E7D9900E655FF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AD0258AF1B4E7D9900E655FF /* main.m */; };
+		AD0258B31B4E7D9900E655FF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD0258B21B4E7D9900E655FF /* AppDelegate.m */; };
+		AD0258BE1B4E7D9900E655FF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD0258BC1B4E7D9900E655FF /* LaunchScreen.xib */; };
+		AD0258CA1B4E7D9A00E655FF /* ArrowsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AD0258C91B4E7D9A00E655FF /* ArrowsTests.m */; };
+		AD0258D51B4E7E6900E655FF /* ARRGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD0258D41B4E7E6900E655FF /* ARRGameViewController.m */; };
+		AD0258D81B4E7E8800E655FF /* Game.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD0258D71B4E7E8800E655FF /* Game.storyboard */; };
+		AD0258DB1B4E913F00E655FF /* ARRGameLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = AD0258DA1B4E913F00E655FF /* ARRGameLogic.m */; };
+		AD0258E01B4E936900E655FF /* ARRPlaygroundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD0258DF1B4E936900E655FF /* ARRPlaygroundViewController.m */; };
+		AD0258E31B4E93F800E655FF /* ARRArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD0258E21B4E93F800E655FF /* ARRArrowView.m */; };
+		AD1C889D1B6CF4D500C06017 /* UIButton+ARRAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AD1C889C1B6CF4D500C06017 /* UIButton+ARRAdditions.m */; };
+		AD1C88CE1B75103500C06017 /* allarrows@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD1C88C91B75103500C06017 /* allarrows@3x.png */; };
+		AD1C88CF1B75103500C06017 /* down.png in Resources */ = {isa = PBXBuildFile; fileRef = AD1C88CA1B75103500C06017 /* down.png */; };
+		AD1C88D01B75103500C06017 /* left.png in Resources */ = {isa = PBXBuildFile; fileRef = AD1C88CB1B75103500C06017 /* left.png */; };
+		AD1C88D11B75103500C06017 /* right.png in Resources */ = {isa = PBXBuildFile; fileRef = AD1C88CC1B75103500C06017 /* right.png */; };
+		AD1C88D21B75103500C06017 /* top.png in Resources */ = {isa = PBXBuildFile; fileRef = AD1C88CD1B75103500C06017 /* top.png */; };
+		AD78B6DA1B4FE5DA001A1AFD /* ARRKeyFrameAnimationCompletionListener.m in Sources */ = {isa = PBXBuildFile; fileRef = AD78B6D91B4FE5DA001A1AFD /* ARRKeyFrameAnimationCompletionListener.m */; };
+		AD78B6E81B5106D6001A1AFD /* ARRJoystickViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD78B6E71B5106D6001A1AFD /* ARRJoystickViewController.m */; };
+		ADCA74951B75182400D049A8 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADCA74941B75182400D049A8 /* Media.xcassets */; };
+		ADCCBF0B1B5157F800E9AE44 /* DCTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = ADCCBF0A1B5157F800E9AE44 /* DCTheme.m */; };
+		ADCCBF0F1B5158E800E9AE44 /* ARRTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = ADCCBF0E1B5158E800E9AE44 /* ARRTheme.m */; };
+		ADCCBF121B51595F00E9AE44 /* ARRConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = ADCCBF111B51595F00E9AE44 /* ARRConstants.m */; };
+		ADCCBF151B515B2700E9AE44 /* theme.json in Resources */ = {isa = PBXBuildFile; fileRef = ADCCBF141B515B2700E9AE44 /* theme.json */; };
+		ADCCBF1E1B60012800E9AE44 /* ARRGameOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADCCBF1D1B60012800E9AE44 /* ARRGameOverViewController.m */; };
+		ADCCBF411B6CBA8B00E9AE44 /* ARRUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = ADCCBF401B6CBA8B00E9AE44 /* ARRUtils.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AD0258C41B4E7D9900E655FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD0258A21B4E7D9900E655FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AD0258A91B4E7D9900E655FF;
+			remoteInfo = Arrows;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AD0258AA1B4E7D9900E655FF /* Arrows.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Arrows.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD0258AE1B4E7D9900E655FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD0258AF1B4E7D9900E655FF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AD0258B11B4E7D9900E655FF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		AD0258B21B4E7D9900E655FF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		AD0258BD1B4E7D9900E655FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		AD0258C31B4E7D9900E655FF /* ArrowsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ArrowsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD0258C81B4E7D9900E655FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD0258C91B4E7D9A00E655FF /* ArrowsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArrowsTests.m; sourceTree = "<group>"; };
+		AD0258D31B4E7E6900E655FF /* ARRGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARRGameViewController.h; path = Arrows/ARRGameViewController.h; sourceTree = "<group>"; };
+		AD0258D41B4E7E6900E655FF /* ARRGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ARRGameViewController.m; path = Arrows/ARRGameViewController.m; sourceTree = "<group>"; };
+		AD0258D71B4E7E8800E655FF /* Game.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Game.storyboard; sourceTree = "<group>"; };
+		AD0258D91B4E913F00E655FF /* ARRGameLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARRGameLogic.h; sourceTree = "<group>"; };
+		AD0258DA1B4E913F00E655FF /* ARRGameLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARRGameLogic.m; sourceTree = "<group>"; };
+		AD0258DE1B4E936900E655FF /* ARRPlaygroundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARRPlaygroundViewController.h; sourceTree = "<group>"; };
+		AD0258DF1B4E936900E655FF /* ARRPlaygroundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARRPlaygroundViewController.m; sourceTree = "<group>"; };
+		AD0258E11B4E93F800E655FF /* ARRArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARRArrowView.h; sourceTree = "<group>"; };
+		AD0258E21B4E93F800E655FF /* ARRArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARRArrowView.m; sourceTree = "<group>"; };
+		AD1C889B1B6CF4D500C06017 /* UIButton+ARRAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+ARRAdditions.h"; sourceTree = "<group>"; };
+		AD1C889C1B6CF4D500C06017 /* UIButton+ARRAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ARRAdditions.m"; sourceTree = "<group>"; };
+		AD1C88C91B75103500C06017 /* allarrows@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "allarrows@3x.png"; sourceTree = "<group>"; };
+		AD1C88CA1B75103500C06017 /* down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down.png; sourceTree = "<group>"; };
+		AD1C88CB1B75103500C06017 /* left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left.png; sourceTree = "<group>"; };
+		AD1C88CC1B75103500C06017 /* right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right.png; sourceTree = "<group>"; };
+		AD1C88CD1B75103500C06017 /* top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top.png; sourceTree = "<group>"; };
+		AD78B6D81B4FE5DA001A1AFD /* ARRKeyFrameAnimationCompletionListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARRKeyFrameAnimationCompletionListener.h; sourceTree = "<group>"; };
+		AD78B6D91B4FE5DA001A1AFD /* ARRKeyFrameAnimationCompletionListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARRKeyFrameAnimationCompletionListener.m; sourceTree = "<group>"; };
+		AD78B6E61B5106D6001A1AFD /* ARRJoystickViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARRJoystickViewController.h; sourceTree = "<group>"; };
+		AD78B6E71B5106D6001A1AFD /* ARRJoystickViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARRJoystickViewController.m; sourceTree = "<group>"; };
+		ADCA74941B75182400D049A8 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = ../Media.xcassets; sourceTree = "<group>"; };
+		ADCCBF091B5157F800E9AE44 /* DCTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCTheme.h; sourceTree = "<group>"; };
+		ADCCBF0A1B5157F800E9AE44 /* DCTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCTheme.m; sourceTree = "<group>"; };
+		ADCCBF0D1B5158E800E9AE44 /* ARRTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARRTheme.h; sourceTree = "<group>"; };
+		ADCCBF0E1B5158E800E9AE44 /* ARRTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARRTheme.m; sourceTree = "<group>"; };
+		ADCCBF101B51595F00E9AE44 /* ARRConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARRConstants.h; sourceTree = "<group>"; };
+		ADCCBF111B51595F00E9AE44 /* ARRConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARRConstants.m; sourceTree = "<group>"; };
+		ADCCBF131B515A2E00E9AE44 /* Arrows.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Arrows.pch; sourceTree = "<group>"; };
+		ADCCBF141B515B2700E9AE44 /* theme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = theme.json; sourceTree = "<group>"; };
+		ADCCBF1C1B60012800E9AE44 /* ARRGameOverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARRGameOverViewController.h; sourceTree = "<group>"; };
+		ADCCBF1D1B60012800E9AE44 /* ARRGameOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARRGameOverViewController.m; sourceTree = "<group>"; };
+		ADCCBF3F1B6CBA8B00E9AE44 /* ARRUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARRUtils.h; sourceTree = "<group>"; };
+		ADCCBF401B6CBA8B00E9AE44 /* ARRUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARRUtils.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AD0258A71B4E7D9900E655FF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD0258C01B4E7D9900E655FF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AD0258A11B4E7D9900E655FF = {
+			isa = PBXGroup;
+			children = (
+				AD0258AC1B4E7D9900E655FF /* Arrows */,
+				AD0258C61B4E7D9900E655FF /* ArrowsTests */,
+				AD0258AB1B4E7D9900E655FF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AD0258AB1B4E7D9900E655FF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AD0258AA1B4E7D9900E655FF /* Arrows.app */,
+				AD0258C31B4E7D9900E655FF /* ArrowsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AD0258AC1B4E7D9900E655FF /* Arrows */ = {
+			isa = PBXGroup;
+			children = (
+				AD0258D61B4E7E7500E655FF /* Game */,
+				AD0258B11B4E7D9900E655FF /* AppDelegate.h */,
+				AD0258B21B4E7D9900E655FF /* AppDelegate.m */,
+				AD0258BC1B4E7D9900E655FF /* LaunchScreen.xib */,
+				AD0258AD1B4E7D9900E655FF /* Supporting Files */,
+			);
+			path = Arrows;
+			sourceTree = "<group>";
+		};
+		AD0258AD1B4E7D9900E655FF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				ADCA74941B75182400D049A8 /* Media.xcassets */,
+				AD1C88C81B75103500C06017 /* icons */,
+				ADCCBF141B515B2700E9AE44 /* theme.json */,
+				AD0258AE1B4E7D9900E655FF /* Info.plist */,
+				AD0258AF1B4E7D9900E655FF /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AD0258C61B4E7D9900E655FF /* ArrowsTests */ = {
+			isa = PBXGroup;
+			children = (
+				AD0258C91B4E7D9A00E655FF /* ArrowsTests.m */,
+				AD0258C71B4E7D9900E655FF /* Supporting Files */,
+			);
+			path = ArrowsTests;
+			sourceTree = "<group>";
+		};
+		AD0258C71B4E7D9900E655FF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AD0258C81B4E7D9900E655FF /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AD0258D61B4E7E7500E655FF /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				ADCCBF1B1B60010A00E9AE44 /* GameOver */,
+				ADCCBF0C1B5157FF00E9AE44 /* Theme */,
+				ADCCBF081B51416300E9AE44 /* Common */,
+				AD78B6E91B51073F001A1AFD /* Logic */,
+				AD78B6E51B5106A7001A1AFD /* Joystick */,
+				AD0258DD1B4E934C00E655FF /* Playground */,
+				AD0258E11B4E93F800E655FF /* ARRArrowView.h */,
+				AD0258E21B4E93F800E655FF /* ARRArrowView.m */,
+				AD0258D31B4E7E6900E655FF /* ARRGameViewController.h */,
+				AD0258D41B4E7E6900E655FF /* ARRGameViewController.m */,
+				AD0258D71B4E7E8800E655FF /* Game.storyboard */,
+			);
+			name = Game;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		AD0258DD1B4E934C00E655FF /* Playground */ = {
+			isa = PBXGroup;
+			children = (
+				AD78B6D81B4FE5DA001A1AFD /* ARRKeyFrameAnimationCompletionListener.h */,
+				AD78B6D91B4FE5DA001A1AFD /* ARRKeyFrameAnimationCompletionListener.m */,
+				AD0258DE1B4E936900E655FF /* ARRPlaygroundViewController.h */,
+				AD0258DF1B4E936900E655FF /* ARRPlaygroundViewController.m */,
+			);
+			name = Playground;
+			sourceTree = "<group>";
+		};
+		AD1C88C81B75103500C06017 /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				AD1C88C91B75103500C06017 /* allarrows@3x.png */,
+				AD1C88CA1B75103500C06017 /* down.png */,
+				AD1C88CB1B75103500C06017 /* left.png */,
+				AD1C88CC1B75103500C06017 /* right.png */,
+				AD1C88CD1B75103500C06017 /* top.png */,
+			);
+			path = icons;
+			sourceTree = "<group>";
+		};
+		AD78B6E51B5106A7001A1AFD /* Joystick */ = {
+			isa = PBXGroup;
+			children = (
+				AD78B6E61B5106D6001A1AFD /* ARRJoystickViewController.h */,
+				AD78B6E71B5106D6001A1AFD /* ARRJoystickViewController.m */,
+			);
+			name = Joystick;
+			sourceTree = "<group>";
+		};
+		AD78B6E91B51073F001A1AFD /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				AD0258D91B4E913F00E655FF /* ARRGameLogic.h */,
+				AD0258DA1B4E913F00E655FF /* ARRGameLogic.m */,
+			);
+			name = Logic;
+			sourceTree = "<group>";
+		};
+		ADCCBF081B51416300E9AE44 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				ADCCBF131B515A2E00E9AE44 /* Arrows.pch */,
+				ADCCBF101B51595F00E9AE44 /* ARRConstants.h */,
+				ADCCBF111B51595F00E9AE44 /* ARRConstants.m */,
+				ADCCBF3F1B6CBA8B00E9AE44 /* ARRUtils.h */,
+				ADCCBF401B6CBA8B00E9AE44 /* ARRUtils.m */,
+				AD1C889B1B6CF4D500C06017 /* UIButton+ARRAdditions.h */,
+				AD1C889C1B6CF4D500C06017 /* UIButton+ARRAdditions.m */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		ADCCBF0C1B5157FF00E9AE44 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				ADCCBF091B5157F800E9AE44 /* DCTheme.h */,
+				ADCCBF0A1B5157F800E9AE44 /* DCTheme.m */,
+				ADCCBF0D1B5158E800E9AE44 /* ARRTheme.h */,
+				ADCCBF0E1B5158E800E9AE44 /* ARRTheme.m */,
+			);
+			name = Theme;
+			sourceTree = "<group>";
+		};
+		ADCCBF1B1B60010A00E9AE44 /* GameOver */ = {
+			isa = PBXGroup;
+			children = (
+				ADCCBF1C1B60012800E9AE44 /* ARRGameOverViewController.h */,
+				ADCCBF1D1B60012800E9AE44 /* ARRGameOverViewController.m */,
+			);
+			name = GameOver;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AD0258A91B4E7D9900E655FF /* Arrows */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD0258CD1B4E7D9A00E655FF /* Build configuration list for PBXNativeTarget "Arrows" */;
+			buildPhases = (
+				AD0258A61B4E7D9900E655FF /* Sources */,
+				AD0258A71B4E7D9900E655FF /* Frameworks */,
+				AD0258A81B4E7D9900E655FF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Arrows;
+			productName = Arrows;
+			productReference = AD0258AA1B4E7D9900E655FF /* Arrows.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AD0258C21B4E7D9900E655FF /* ArrowsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD0258D01B4E7D9A00E655FF /* Build configuration list for PBXNativeTarget "ArrowsTests" */;
+			buildPhases = (
+				AD0258BF1B4E7D9900E655FF /* Sources */,
+				AD0258C01B4E7D9900E655FF /* Frameworks */,
+				AD0258C11B4E7D9900E655FF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AD0258C51B4E7D9900E655FF /* PBXTargetDependency */,
+			);
+			name = ArrowsTests;
+			productName = ArrowsTests;
+			productReference = AD0258C31B4E7D9900E655FF /* ArrowsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AD0258A21B4E7D9900E655FF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = ARR;
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = Zippr;
+				TargetAttributes = {
+					AD0258A91B4E7D9900E655FF = {
+						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 2E8VMJTP9D;
+					};
+					AD0258C21B4E7D9900E655FF = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = AD0258A91B4E7D9900E655FF;
+					};
+				};
+			};
+			buildConfigurationList = AD0258A51B4E7D9900E655FF /* Build configuration list for PBXProject "arrows" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AD0258A11B4E7D9900E655FF;
+			productRefGroup = AD0258AB1B4E7D9900E655FF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AD0258A91B4E7D9900E655FF /* Arrows */,
+				AD0258C21B4E7D9900E655FF /* ArrowsTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AD0258A81B4E7D9900E655FF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD1C88D11B75103500C06017 /* right.png in Resources */,
+				AD1C88D01B75103500C06017 /* left.png in Resources */,
+				AD0258D81B4E7E8800E655FF /* Game.storyboard in Resources */,
+				AD1C88CF1B75103500C06017 /* down.png in Resources */,
+				ADCCBF151B515B2700E9AE44 /* theme.json in Resources */,
+				AD0258BE1B4E7D9900E655FF /* LaunchScreen.xib in Resources */,
+				AD1C88D21B75103500C06017 /* top.png in Resources */,
+				ADCA74951B75182400D049A8 /* Media.xcassets in Resources */,
+				AD1C88CE1B75103500C06017 /* allarrows@3x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD0258C11B4E7D9900E655FF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AD0258A61B4E7D9900E655FF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD0258D51B4E7E6900E655FF /* ARRGameViewController.m in Sources */,
+				ADCCBF411B6CBA8B00E9AE44 /* ARRUtils.m in Sources */,
+				AD0258E01B4E936900E655FF /* ARRPlaygroundViewController.m in Sources */,
+				ADCCBF0B1B5157F800E9AE44 /* DCTheme.m in Sources */,
+				ADCCBF121B51595F00E9AE44 /* ARRConstants.m in Sources */,
+				AD1C889D1B6CF4D500C06017 /* UIButton+ARRAdditions.m in Sources */,
+				AD0258DB1B4E913F00E655FF /* ARRGameLogic.m in Sources */,
+				AD78B6DA1B4FE5DA001A1AFD /* ARRKeyFrameAnimationCompletionListener.m in Sources */,
+				ADCCBF1E1B60012800E9AE44 /* ARRGameOverViewController.m in Sources */,
+				AD0258B31B4E7D9900E655FF /* AppDelegate.m in Sources */,
+				AD0258B01B4E7D9900E655FF /* main.m in Sources */,
+				ADCCBF0F1B5158E800E9AE44 /* ARRTheme.m in Sources */,
+				AD0258E31B4E93F800E655FF /* ARRArrowView.m in Sources */,
+				AD78B6E81B5106D6001A1AFD /* ARRJoystickViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD0258BF1B4E7D9900E655FF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD0258CA1B4E7D9A00E655FF /* ArrowsTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AD0258C51B4E7D9900E655FF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AD0258A91B4E7D9900E655FF /* Arrows */;
+			targetProxy = AD0258C41B4E7D9900E655FF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AD0258BC1B4E7D9900E655FF /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD0258BD1B4E7D9900E655FF /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AD0258CB1B4E7D9A00E655FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AD0258CC1B4E7D9A00E655FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AD0258CE1B4E7D9A00E655FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PREFIX_HEADER = Arrows.pch;
+				INFOPLIST_FILE = Arrows/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		AD0258CF1B4E7D9A00E655FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PREFIX_HEADER = Arrows.pch;
+				INFOPLIST_FILE = Arrows/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		AD0258D11B4E7D9A00E655FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ArrowsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Arrows.app/Arrows";
+			};
+			name = Debug;
+		};
+		AD0258D21B4E7D9A00E655FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ArrowsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Arrows.app/Arrows";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AD0258A51B4E7D9900E655FF /* Build configuration list for PBXProject "arrows" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD0258CB1B4E7D9A00E655FF /* Debug */,
+				AD0258CC1B4E7D9A00E655FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD0258CD1B4E7D9A00E655FF /* Build configuration list for PBXNativeTarget "Arrows" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD0258CE1B4E7D9A00E655FF /* Debug */,
+				AD0258CF1B4E7D9A00E655FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD0258D01B4E7D9A00E655FF /* Build configuration list for PBXNativeTarget "ArrowsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD0258D11B4E7D9A00E655FF /* Debug */,
+				AD0258D21B4E7D9A00E655FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AD0258A21B4E7D9900E655FF /* Project object */;
+}

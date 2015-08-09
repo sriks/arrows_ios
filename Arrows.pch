@@ -1,0 +1,26 @@
+//
+//  Arrows.pch
+//  Arrows
+//
+//  Created by totaramudu on 11/07/15.
+//  Copyright (c) 2015 Zippr. All rights reserved.
+//
+
+#ifndef Arrows_Arrows_pch
+#define Arrows_Arrows_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import "ARRConstants.h"
+
+#ifdef DEBUG
+
+/*!
+ Quickly test game over scenario.
+ */
+//#define TEST_QUICK_GAME_OVER
+
+#endif // End of DEBUG
+
+#endif
