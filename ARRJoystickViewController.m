@@ -59,6 +59,17 @@ static char kKeyArrowType;
 }
 
 - (void)onJoystickButtonClicked:(UIGestureRecognizer*)gesture {
+    
+    UIView* theView = gesture.view;
+    [UIView animateWithDuration:0.18
+                          delay:0
+                        options:0
+                     animations:^{
+                         theView.transform = CGAffineTransformMakeScale(1.15, 1.15);
+     } completion:^(BOOL finished) {
+         theView.transform = CGAffineTransformMakeScale(1.0, 1.0);
+    }];
+    
     NSNumber* type = (NSNumber*)objc_getAssociatedObject(gesture, &kKeyArrowType);
     [self.gameLogic didClickJoystickWithArrowType:[type intValue]];
 }
