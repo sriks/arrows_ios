@@ -59,14 +59,11 @@ const float FLASH_ANIM_DURATION                       =       1;
 
 - (void)viewDidAppear:(BOOL)animated {
     if (!self.didSetupViews) {
-        self.gameLogic.demoMode = YES;
         [self setupViews];
-        //[self prepareGame];
     }
 }
 
 - (IBAction)onDismissTutorial:(id)sender {
-    self.gameLogic.demoMode = NO;
     self.tutorialLabel.hidden = YES;
     self.tutorialTitleLabel.hidden = YES;
     ((UIButton*)sender).hidden = YES;
@@ -78,14 +75,10 @@ const float FLASH_ANIM_DURATION                       =       1;
 #ifdef TEST_QUICK_GAME_OVER
     [self startGame];
 #else
-    if (!self.gameLogic.demoMode) {
-        __weak ARRPlaygroundViewController* welf = self;
-        [self showCountdownTime:3 withCompletionBlock:^{
-            [welf startGame];
-        }];
-    } else {
-        [self startGame];
-    }
+    __weak ARRPlaygroundViewController* welf = self;
+    [self showCountdownTime:3 withCompletionBlock:^{
+        [welf startGame];
+    }];
 #endif
 }
 

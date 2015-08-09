@@ -107,11 +107,6 @@
 @property (weak, nonatomic) id<ARRPlaygroundControlProtocol> playground;
 
 /*!
- Boolean for demo mode.
- */
-@property (assign) BOOL demoMode;
-
-/*!
  The current life span.
  */
 @property (nonatomic, readonly) int life;

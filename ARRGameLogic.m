@@ -10,6 +10,7 @@
 #import "ARRUtils.h"
 #import <objc/runtime.h>
 
+#pragma mark - Constants
 const int INCREASE_POINTS_BY                =   10;
 const int WINNING_STREAK_ATTEMPTS           =   8;
 const int BONUS_POINTS                      =   INCREASE_POINTS_BY * 4;
@@ -21,25 +22,32 @@ const float SPEED_INCREASE_FACTOR           =   0.01;
 const float INITIAL_SPEED                   =   2.1;
 const float MAX_SPEED                       =   1.75;
 
+#pragma mark - Game state change KVO
+static NSSet* sStateChangeProperties;
 NSString* const kKVOKeyPathSpeed            =   @"speed";
 NSString* const kKVOKeyPathLife             =   @"life";
 NSString* const kKVOKeyPoints               =   @"points";
-NSString* const kKVOKeyPathGameOver         =   @"gameOver";
-NSString* const kKVOKeyPathStopGame         =   @"stopGame";
-NSString* const kKVOKeyPathDemoMode         =   @"demoMode";
+NSString* const kKVOKeyPathState            =   @"state";
 
-static NSSet* sStateChangeProperties;
+// The complete set of states
+typedef enum : NSUInteger {
+    ARRGameStateNotStarted = 0,
+    ARRGameStateStarted,
+    ARRGameStateResumed,
+    ARRGameStatePaused,
+    ARRGameStateStopped
+} ARRGameState;
 
 @interface ARRGameLogic ()
 
+#pragma mark - Public properties.
 @property (nonatomic, assign) int life;
 @property (nonatomic, assign) int points;
 @property (nonatomic, assign) float speed;
-@property (nonatomic, assign) BOOL gameOver;
 @property (nonatomic, assign) int bestScore;
 
 #pragma mark - Internal properties.
-@property (nonatomic, assign) BOOL stopGame;
+@property (nonatomic, assign) ARRGameState state;
 @property (nonatomic, weak) ARRArrowView* currentArrow;
 @property (nonatomic) NSMutableArray* arrowsInPlayground;
 // To hold count continous arrow matches count.
@@ -51,14 +59,14 @@ static NSSet* sStateChangeProperties;
 
 @implementation ARRGameLogic
 
+#pragma mark - Public
+
 + (void)initialize {
     sStateChangeProperties = [NSSet setWithArray:@[
                                 kKVOKeyPathSpeed,
                                 kKVOKeyPathLife,
                                 kKVOKeyPoints,
-                                kKVOKeyPathGameOver,
-                                kKVOKeyPathStopGame,
-                                kKVOKeyPathDemoMode
+                                kKVOKeyPathState
                              ]];
 }
 
@@ -75,11 +83,10 @@ static NSSet* sStateChangeProperties;
     self = [super init];
     if (self) {
         for (NSString* keyPath in sStateChangeProperties) {
-            [self addObserver:self forKeyPath:keyPath options:NSKeyValueObservingOptionNew context:nil];
+            [self addObserver:self forKeyPath:keyPath options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
         }
         self.arrowsInPlayground = [NSMutableArray array];
         [self prepareLogic];
-        [self addObserver:self forKeyPath:kKVOKeyPathDemoMode options:NSKeyValueObservingOptionNew context:nil];
     }
     return self;
 }
@@ -91,8 +98,16 @@ static NSSet* sStateChangeProperties;
     }
 }
 
+- (BOOL)gameOver {
+    return (self.state == ARRGameStateStopped);
+}
+
 - (void)didPreparePlayground {
+    [self dumpStateWithMessage:@"didPreparePlayground"];
+    NSAssert1((ARRGameStateStarted != self.state),
+              @"Cannot restart game with state %lu", self.state);
     [self reset];
+    self.state = ARRGameStateStarted;
     [self sendArrow];
 }
 
@@ -108,6 +123,9 @@ static NSSet* sStateChangeProperties;
 }
 
 - (void)didClickJoystickWithArrowType:(ArrowType)arrowType {
+    if (self.state != ARRGameStateStarted)
+        return;
+    
     // Associated arrow is used to check if user did provide any input.
     // This is used to check if a point is lost.
     self.currentArrow.associatedArrowType = arrowType;
@@ -126,9 +144,7 @@ static NSSet* sStateChangeProperties;
                        context:(void *)context {
     
     // Speed
-    if ([keyPath isEqualToString:kKVOKeyPathSpeed] && (self.speed > 0)) {
-        // Left blank
-    }
+    if ([keyPath isEqualToString:kKVOKeyPathSpeed] && (self.speed > 0)) {}
     
     // Life
     else if ([keyPath isEqualToString:kKVOKeyPathLife]) {
@@ -137,30 +153,51 @@ static NSSet* sStateChangeProperties;
                                                precentage:remainingLifePercentage];
     }
     
-    // Gameover
-    else if ([keyPath isEqualToString:kKVOKeyPathGameOver] && self.gameOver) {
-        if (self.bestScore < self.points) {
-            self.bestScore = self.points;
-            [self updateBestScoreToUserDefaults:self.bestScore];
-        }
-        self.stopGame = YES;
-        [self.playground didEndGame:self.points];
-        id gameEventsListener = self.gameEventsDelegate;
-        [self.playground showFlash:@"GAME OVER" positive:NO];
-        // Send this message after a delay so that the flash is shown to user.
-        [gameEventsListener performSelector:@selector(didEndGame:) withObject:self afterDelay:1];
-    }
-    
-    // Stop game
-    else if ([keyPath isEqualToString:kKVOKeyPathStopGame] && self.stopGame) {
-        [self.playground removeArrows:self.arrowsInPlayground];
-        [self.arrowsInPlayground removeAllObjects];
-    }
-    
-    // Demo mode
-    else if ([keyPath isEqualToString:kKVOKeyPathDemoMode]) {
-        if (!self.demoMode) {
-            self.stopGame = YES;
+    // Game state
+    else if ([keyPath isEqualToString:kKVOKeyPathState]) {
+        
+        switch (self.state) {
+            case ARRGameStateNotStarted: {
+                break;
+            }
+                
+            case ARRGameStateStarted: {
+                break;
+            }
+
+            case ARRGameStatePaused: {
+                [self.playground removeArrows:self.arrowsInPlayground];
+                [self.arrowsInPlayground removeAllObjects];
+                break;
+            }
+
+            case ARRGameStateStopped: {
+                // Game over
+                if (![change[NSKeyValueChangeOldKey] isEqual:@(ARRGameStatePaused)]) {
+                    // When stopped the state transitions from paused to stopped.
+                    self.state = ARRGameStatePaused;
+                    self.state = ARRGameStateStopped;
+                }
+                
+                if (self.bestScore < self.points) {
+                    self.bestScore = self.points;
+                    [self updateBestScoreToUserDefaults:self.bestScore];
+                }
+                [self.playground didEndGame:self.points];
+                id gameEventsListener = self.gameEventsDelegate;
+                [self.playground showFlash:@"GAME OVER" positive:NO];
+                // Send this message after a delay so that the flash is shown to user.
+                [gameEventsListener performSelector:@selector(didEndGame:)
+                                         withObject:self
+                                         afterDelay:1];
+                break;
+            }
+
+            default: {
+                [NSException raise:NSInvalidArgumentException
+                            format:@"Unknown game state %lu", (unsigned long)self.state];
+                break;
+            }
         }
     }
 }
@@ -168,7 +205,8 @@ static NSSet* sStateChangeProperties;
 #pragma mark - Private
 
 - (void)dumpStateWithMessage:(NSString*)msg {
-    NSLog(@"** State changed for %@ **", msg);
+    NSLog(@"** Game snapshot for %@ **", msg);
+    NSLog(@"state: %lu", (unsigned long)self.state);
     NSLog(@"life: %d/%d", self.life, MAX_LIFE);
     NSLog(@"points: %d", self.points);
     NSLog(@"speed: %f", self.speed);
@@ -180,13 +218,12 @@ static NSSet* sStateChangeProperties;
 }
 
 - (void)reset {
+    self.state = ARRGameStateNotStarted;
     self.bestScore = [[[NSUserDefaults standardUserDefaults]
                        valueForKey:kARRNSUserDefaultsKeyBestScore] intValue];
     self.winningStreakCount = 0;
     self.pointsBeforeIncreasingSpeed = 0;
     self.points = 0;
-    self.gameOver = NO;
-    self.stopGame = NO;
     self.didShowBestScoreFlash = NO;
     self.speed = INITIAL_SPEED;
     [self.arrowsInPlayground removeAllObjects];
@@ -198,7 +235,8 @@ static NSSet* sStateChangeProperties;
 }
 
 - (void)sendArrow {
-    if(self.stopGame) return;
+    if(self.state != ARRGameStateStarted)
+        return;
     
     ARRArrowView* arrow = [self arrowView];
     [self.playground startAnimatingArrowView:arrow];
@@ -235,8 +273,8 @@ static NSSet* sStateChangeProperties;
         [self updateBestScoreToUserDefaults:self.bestScore];
         [self.playground showFlash:@"BEST SCORE" positive:YES];
         self.didShowBestScoreFlash = YES;
+        // Note: Best score is saved when game ends.
     }
-    // Note: Best score is saved when game ends.
 
     // Increase speed.
     if (((self.points - self.pointsBeforeIncreasingSpeed) >= INCREASE_SPEED_AFTER_POINTS) &&
@@ -250,19 +288,21 @@ static NSSet* sStateChangeProperties;
 }
 
 - (void)arrowMismatched {
-    if (self.stopGame) return;
+    if (self.state != ARRGameStateStarted)
+        return;
     
     self.winningStreakCount = 0;
     self.life -= DECREASE_LIFE_BY;
     [self dumpStateWithMessage:@"arrow mis-match"];
     
     if (self.life <= 0) {
-        self.gameOver = YES;
-    } else if (!self.demoMode) {
-        if (self.life == DECREASE_LIFE_BY)
+        self.state = ARRGameStateStopped;
+    } else {
+        if (self.life == DECREASE_LIFE_BY) {
             [self.playground showFlash:@"LAST CHANCE" positive:NO];
-        else
+        } else {
             [self.playground showFlash:@"WRONG" positive:NO];
+        }
     }
 }
 
