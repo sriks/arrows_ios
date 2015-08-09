@@ -305,7 +305,7 @@
 			attributes = {
 				CLASSPREFIX = ARR;
 				LastUpgradeCheck = 0640;
-				ORGANIZATIONNAME = Zippr;
+				ORGANIZATIONNAME = Deviceworks;
 				TargetAttributes = {
 					AD0258A91B4E7D9900E655FF = {
 						CreatedOnToolsVersion = 6.4;
