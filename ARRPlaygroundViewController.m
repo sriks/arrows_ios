@@ -26,7 +26,6 @@ const float FLASH_ANIM_DURATION                       =       1;
 @property (weak, nonatomic) IBOutlet UILabel *tutorialLabel;
 @property (weak, nonatomic) IBOutlet UILabel *flashLabel;
 @property (weak, nonatomic) IBOutlet UILabel *tutorialTitleLabel;
-
 @property (weak, nonatomic) IBOutlet UIButton *dismissTutorialButton;
 
 @property (nonatomic) UIView* lifeLevel;
@@ -35,6 +34,8 @@ const float FLASH_ANIM_DURATION                       =       1;
 @property (nonatomic) UIBezierPath *firstHalfPath;
 @property (nonatomic, assign) CGPoint bottomPoint;
 
+@property (nonatomic, copy) ARRPreparePlaygroundCompletionBlock preparationCompletionBlock;
+@property (nonatomic) BOOL isTutorialDismissed;
 @property (nonatomic) float playgroundHeight;
 @property (nonatomic) float playgroundWidth;
 @property (nonatomic) BOOL didSetupViews;
@@ -64,27 +65,28 @@ const float FLASH_ANIM_DURATION                       =       1;
 }
 
 - (IBAction)onDismissTutorial:(id)sender {
+    self.isTutorialDismissed = YES;
     self.tutorialLabel.hidden = YES;
     self.tutorialTitleLabel.hidden = YES;
     ((UIButton*)sender).hidden = YES;
-    [self prepareGame];
+    [self preparePlaygroundWithCompletionBlock:self.preparationCompletionBlock];
 }
 
-- (void)prepareGame {
-     self.flashLabel.hidden = YES;
+- (void)preparePlaygroundWithCompletionBlock:(ARRPreparePlaygroundCompletionBlock)block {
+    if (!self.isTutorialDismissed) {
+        // Completion is called after tutorial is dismissed
+        self.preparationCompletionBlock = block;
+        return;
+    }
+    
 #ifdef TEST_QUICK_GAME_OVER
-    [self startGame];
+    block();
 #else
-    __weak ARRPlaygroundViewController* welf = self;
+    // Showing a countdown timer.
     [self showCountdownTime:3 withCompletionBlock:^{
-        [welf startGame];
+        block();
     }];
 #endif
-}
-
-- (void)startGame {
-    [self.gameLogic didPreparePlayground];
-    [self didDecreaseLifeWithRemainingLife:self.gameLogic.life precentage:100];
 }
 
 - (void)setupViews {

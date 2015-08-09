@@ -25,6 +25,7 @@ const int PLAYGROUND_PERCENTAGE         =   70;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self resizeSubviews];
+    [self preparePlaygroundAndStartGame];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -76,6 +77,14 @@ const int PLAYGROUND_PERCENTAGE         =   70;
     }
 }
 
+#pragma mark - Private
+
+- (void)preparePlaygroundAndStartGame {
+    [self.playgroundVC preparePlaygroundWithCompletionBlock:^{
+        [self.gameLogic startGame];
+    }];
+}
+
 #pragma mark - ARRGameEventsProtocol
 
 - (void)didStartGame:(ARRGameLogic *)logic {}
@@ -87,7 +96,7 @@ const int PLAYGROUND_PERCENTAGE         =   70;
 #pragma mark - ARRGameOverDelegate
 
 - (void)didSelectPlayagain {
-    [self.playgroundVC prepareGame];
+    [self preparePlaygroundAndStartGame];
 }
 
 @end

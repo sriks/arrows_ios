@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "ARRGameLogic.h"
 
+typedef void(^ARRPreparePlaygroundCompletionBlock)(void);
+
 /*!
  The play ground controller.
  */
@@ -17,7 +19,8 @@
 /*!
  Should be called to prepare the playground.
  */
-- (void)prepareGame;
+- (void)preparePlaygroundWithCompletionBlock:(ARRPreparePlaygroundCompletionBlock)block;
+
 @property (nonatomic, weak) ARRGameLogic* gameLogic;
 
 @end

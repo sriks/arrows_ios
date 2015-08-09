@@ -140,9 +140,9 @@
 
 /*!
  Should be called after playground is prepared.
- This is an intimation to logic to start the game.
+ This is an intimation to start the game.
  */
-- (void)didPreparePlayground;
+- (void)startGame;
 
 /*!
  Should be called after the arrow completes 3/4 path.

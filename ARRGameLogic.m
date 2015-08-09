@@ -102,10 +102,10 @@ typedef enum : NSUInteger {
     return (self.state == ARRGameStateStopped);
 }
 
-- (void)didPreparePlayground {
-    [self dumpStateWithMessage:@"didPreparePlayground"];
+- (void)startGame {
+    [self dumpStateWithMessage:@"startGame"];
     NSAssert1((ARRGameStateStarted != self.state),
-              @"Cannot restart game with state %lu", self.state);
+              @"Cannot restart game with state %d", self.state);
     [self reset];
     self.state = ARRGameStateStarted;
     [self sendArrow];
