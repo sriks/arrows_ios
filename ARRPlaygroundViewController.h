@@ -21,6 +21,8 @@ typedef void(^ARRPreparePlaygroundCompletionBlock)(void);
  */
 - (void)preparePlaygroundWithCompletionBlock:(ARRPreparePlaygroundCompletionBlock)block;
 
+- (void)resumePlaygroundWithCompletionBlock:(ARRPreparePlaygroundCompletionBlock)block;
+
 @property (nonatomic, weak) ARRGameLogic* gameLogic;
 
 @end

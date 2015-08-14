@@ -21,13 +21,13 @@
 @protocol ARRGameEventsProtocol <NSObject>
 @required
 /*!
- Called after the game is started.
+ Called only once after the game is started.
  @param logic The game logic.
  */
 - (void)didStartGame:(ARRGameLogic*)logic;
 
 /*!
- Called after the game is ended.
+ Called only once after the game is ended.
  @param logic The game logic
  */
 - (void)didEndGame:(ARRGameLogic*)logic;
@@ -143,6 +143,16 @@
  This is an intimation to start the game.
  */
 - (void)startGame;
+
+/*!
+ Should be called to pause the game.
+ */
+- (void)pauseGame;
+
+/*!
+ Should be called to resume the game.
+ */
+- (void)resumeGame;
 
 /*!
  Should be called after the arrow completes 3/4 path.

@@ -28,6 +28,8 @@ const int PLAYGROUND_PERCENTAGE         =   70;
     [self preparePlaygroundAndStartGame];
 }
 
+- (void)dealloc {}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -85,11 +87,33 @@ const int PLAYGROUND_PERCENTAGE         =   70;
     }];
 }
 
+- (void)appWillResignActive {
+    [self.gameLogic pauseGame];
+}
+
+- (void)appWillEnterForeground {
+    NSLog(@"appWillEnterForeground");
+    [self.playgroundVC resumePlaygroundWithCompletionBlock:^{
+        [self.gameLogic resumeGame];
+    }];
+}
+
 #pragma mark - ARRGameEventsProtocol
 
-- (void)didStartGame:(ARRGameLogic *)logic {}
+- (void)didStartGame:(ARRGameLogic *)logic {
+    UIApplication* theApp = [UIApplication sharedApplication];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(appWillResignActive)
+                                                 name:UIApplicationWillResignActiveNotification
+                                               object:theApp];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(appWillEnterForeground)
+                                                 name:UIApplicationWillEnterForegroundNotification
+                                               object:theApp];
+}
 
 - (void)didEndGame:(ARRGameLogic *)logic {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self performSegueWithIdentifier:@"gameover" sender:logic];
 }
 

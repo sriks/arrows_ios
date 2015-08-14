@@ -30,8 +30,9 @@ NSString* const kKVOKeyPoints               =   @"points";
 NSString* const kKVOKeyPathState            =   @"state";
 
 // The complete set of states
-typedef enum : NSUInteger {
-    ARRGameStateNotStarted = 0,
+typedef enum : NSInteger {
+    ARRGameStateInvalid = -1,
+    ARRGameStateNotStarted,
     ARRGameStateStarted,
     ARRGameStateResumed,
     ARRGameStatePaused,
@@ -83,7 +84,8 @@ typedef enum : NSUInteger {
     self = [super init];
     if (self) {
         for (NSString* keyPath in sStateChangeProperties) {
-            [self addObserver:self forKeyPath:keyPath options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
+            [self addObserver:self forKeyPath:keyPath
+                      options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
         }
         self.arrowsInPlayground = [NSMutableArray array];
         [self prepareLogic];
@@ -105,10 +107,19 @@ typedef enum : NSUInteger {
 - (void)startGame {
     [self dumpStateWithMessage:@"startGame"];
     NSAssert1((ARRGameStateStarted != self.state),
-              @"Cannot restart game with state %d", self.state);
+              @"Cannot restart game with state %d", (unsigned)self.state);
     [self reset];
     self.state = ARRGameStateStarted;
-    [self sendArrow];
+}
+
+- (void)pauseGame {
+    [self dumpStateWithMessage:@"pauseGame"];
+    self.state = ARRGameStatePaused;
+}
+
+- (void)resumeGame {
+    [self dumpStateWithMessage:@"resumeGame"];
+    self.state = ARRGameStateResumed;
 }
 
 - (void)didFinishThreeFourthPath:(ARRArrowView*)arrowView {
@@ -156,12 +167,37 @@ typedef enum : NSUInteger {
     // Game state
     else if ([keyPath isEqualToString:kKVOKeyPathState]) {
         
-        switch (self.state) {
+        /*
+         Game states
+         Start:   ARRGameStateNotStarted->ARRGameStateStarted
+         Pause:   ARRGameStatePaused->ARRGameStateResumed->ARRGameStateStarted
+         End:     ARRGameStateStarted->ARRGameStateStopped
+         Restart: ARRGameStateStopped->ARRGameStateStarted
+         */
+        
+        ARRGameState previousState;
+        ARRGameState newState = [change[NSKeyValueChangeNewKey] intValue];
+        if (change[NSKeyValueChangeOldKey])
+            previousState = [change[NSKeyValueChangeOldKey] intValue];
+        else
+            previousState = ARRGameStateInvalid;
+        
+        switch (newState) {
             case ARRGameStateNotStarted: {
                 break;
             }
                 
             case ARRGameStateStarted: {
+                if ((previousState == ARRGameStateNotStarted) ||
+                    (previousState == ARRGameStateStopped)) {
+                    [self.gameEventsDelegate didStartGame:self];
+                }
+                [self sendArrow];
+                break;
+            }
+                
+            case ARRGameStateResumed: {
+                self.state = ARRGameStateStarted;
                 break;
             }
 
@@ -210,6 +246,7 @@ typedef enum : NSUInteger {
     NSLog(@"life: %d/%d", self.life, MAX_LIFE);
     NSLog(@"points: %d", self.points);
     NSLog(@"speed: %f", self.speed);
+    NSLog(@"arrows in playground: %d",self.arrowsInPlayground.count);
 }
 
 - (void) prepareLogic {

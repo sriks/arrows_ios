@@ -83,10 +83,12 @@ const float FLASH_ANIM_DURATION                       =       1;
     block();
 #else
     // Showing a countdown timer.
-    [self showCountdownTime:3 withCompletionBlock:^{
-        block();
-    }];
+    [self initiateCountdownTime:3 withCompletionBlock:block];
 #endif
+}
+
+- (void)resumePlaygroundWithCompletionBlock:(ARRPreparePlaygroundCompletionBlock)block {
+    [self initiateCountdownTime:3 withCompletionBlock:block];
 }
 
 - (void)setupViews {
@@ -217,8 +219,17 @@ const float FLASH_ANIM_DURATION                       =       1;
 
 #pragma mark Private
 
+- (void)initiateCountdownTime:(int)seconds
+          withCompletionBlock:(ARRPreparePlaygroundCompletionBlock)block {
+    // Showing a countdown timer.
+    [self showCountdownTime:3 withCompletionBlock:^{
+        block();
+    }];
+}
+
 - (void)showCountdownTime:(int)countdown
       withCompletionBlock:(CountdownTimerCompletionBlock)block {
+    
     if (countdown < 0) {
         block();
         return;
