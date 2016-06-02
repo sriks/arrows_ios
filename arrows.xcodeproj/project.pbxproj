@@ -16,6 +16,8 @@
 		AD0258DB1B4E913F00E655FF /* ARRGameLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = AD0258DA1B4E913F00E655FF /* ARRGameLogic.m */; };
 		AD0258E01B4E936900E655FF /* ARRPlaygroundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD0258DF1B4E936900E655FF /* ARRPlaygroundViewController.m */; };
 		AD0258E31B4E93F800E655FF /* ARRArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD0258E21B4E93F800E655FF /* ARRArrowView.m */; };
+		AD0CA4A21CFE906800C93D12 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD0CA4A01CFE906800C93D12 /* Fabric.framework */; };
+		AD0CA4A31CFE906800C93D12 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD0CA4A11CFE906800C93D12 /* Crashlytics.framework */; };
 		AD1C889D1B6CF4D500C06017 /* UIButton+ARRAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = AD1C889C1B6CF4D500C06017 /* UIButton+ARRAdditions.m */; };
 		AD1C88CE1B75103500C06017 /* allarrows@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD1C88C91B75103500C06017 /* allarrows@3x.png */; };
 		AD1C88CF1B75103500C06017 /* down.png in Resources */ = {isa = PBXBuildFile; fileRef = AD1C88CA1B75103500C06017 /* down.png */; };
@@ -62,6 +64,8 @@
 		AD0258DF1B4E936900E655FF /* ARRPlaygroundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARRPlaygroundViewController.m; sourceTree = "<group>"; };
 		AD0258E11B4E93F800E655FF /* ARRArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARRArrowView.h; sourceTree = "<group>"; };
 		AD0258E21B4E93F800E655FF /* ARRArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARRArrowView.m; sourceTree = "<group>"; };
+		AD0CA4A01CFE906800C93D12 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		AD0CA4A11CFE906800C93D12 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		AD1C889B1B6CF4D500C06017 /* UIButton+ARRAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+ARRAdditions.h"; sourceTree = "<group>"; };
 		AD1C889C1B6CF4D500C06017 /* UIButton+ARRAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ARRAdditions.m"; sourceTree = "<group>"; };
 		AD1C88C91B75103500C06017 /* allarrows@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "allarrows@3x.png"; sourceTree = "<group>"; };
@@ -93,6 +97,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD0CA4A31CFE906800C93D12 /* Crashlytics.framework in Frameworks */,
+				AD0CA4A21CFE906800C93D12 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +115,8 @@
 		AD0258A11B4E7D9900E655FF = {
 			isa = PBXGroup;
 			children = (
+				AD0CA4A01CFE906800C93D12 /* Fabric.framework */,
+				AD0CA4A11CFE906800C93D12 /* Crashlytics.framework */,
 				AD0258AC1B4E7D9900E655FF /* Arrows */,
 				AD0258C61B4E7D9900E655FF /* ArrowsTests */,
 				AD0258AB1B4E7D9900E655FF /* Products */,
@@ -269,6 +277,7 @@
 				AD0258A61B4E7D9900E655FF /* Sources */,
 				AD0258A71B4E7D9900E655FF /* Frameworks */,
 				AD0258A81B4E7D9900E655FF /* Resources */,
+				AD0CA49F1CFE902F00C93D12 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -361,6 +370,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AD0CA49F1CFE902F00C93D12 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 32b0517c4dc0809108264df306048bda675209a8 55220b3193942e3ab9a105dd08ce754f23a12149db933f71001d95a0bffded2a";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AD0258A61B4E7D9900E655FF /* Sources */ = {
@@ -501,6 +526,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREFIX_HEADER = Arrows.pch;
 				INFOPLIST_FILE = Arrows/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -515,6 +544,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREFIX_HEADER = Arrows.pch;
 				INFOPLIST_FILE = Arrows/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

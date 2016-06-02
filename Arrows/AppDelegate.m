@@ -6,7 +6,11 @@
 //  Copyright (c) 2015 Deviceworks. All rights reserved.
 //
 
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+
 #import "AppDelegate.h"
+
 
 @interface AppDelegate ()
 
@@ -16,9 +20,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Let user enjoy the beautiful spash screen for a while. 
+    [Fabric with:@[[Crashlytics class]]];
+    // Let user enjoy the beautiful spash screen for a while.
     [NSThread sleepForTimeInterval:3];
-    // Override point for customization after application launch.
     return YES;
 }
 

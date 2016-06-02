@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 /*!
- The baseic arrow view
+ The basic arrow view
  */
 @interface ARRArrowView : UIView
 
