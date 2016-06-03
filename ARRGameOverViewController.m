@@ -9,6 +9,7 @@
 #import "ARRGameOverViewController.h"
 #import "ARRArrowView.h"
 #import "UIButton+ARRAdditions.h"
+#import "ARRAnalytics.h"
 
 @interface ARRGameOverViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *playAgainButton;
@@ -44,6 +45,13 @@
         [self.navigationController popViewControllerAnimated:YES];
         [self.delegate didSelectPlayagain];
     }
+}
+
+- (IBAction)onSpreadTheWordClicked:(id)sender {
+    NSArray* shareItems = @[@"Loved the Arrows game! Give it a spin ", @""];
+    UIActivityViewController* activity = [[UIActivityViewController alloc] initWithActivityItems:shareItems applicationActivities:nil];
+    [self presentViewController:activity animated:YES completion:nil];
+    [ARRAnalytics logShareEvent];
 }
 
 - (BOOL)prefersStatusBarHidden {

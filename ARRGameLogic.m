@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Deviceworks. All rights reserved.
 //
 
+#import <objc/runtime.h>
 #import "ARRGameLogic.h"
 #import "ARRUtils.h"
-#import <objc/runtime.h>
 
 #pragma mark - Constants
 const int INCREASE_POINTS_BY                =   10;
@@ -55,7 +55,6 @@ typedef enum : NSInteger {
 @property (nonatomic, assign) int winningStreakCount;
 @property (nonatomic, assign) int pointsBeforeIncreasingSpeed;
 @property (nonatomic, assign) BOOL didShowBestScoreFlash;
-
 @end
 
 @implementation ARRGameLogic
@@ -241,12 +240,14 @@ typedef enum : NSInteger {
 #pragma mark - Private
 
 - (void)dumpStateWithMessage:(NSString*)msg {
+#ifdef DEBUG
     NSLog(@"** Game snapshot for %@ **", msg);
     NSLog(@"state: %lu", (unsigned long)self.state);
     NSLog(@"life: %d/%d", self.life, MAX_LIFE);
     NSLog(@"points: %d", self.points);
     NSLog(@"speed: %f", self.speed);
-    NSLog(@"arrows in playground: %d",self.arrowsInPlayground.count);
+    NSLog(@"arrows in playground: %lu",(unsigned long)self.arrowsInPlayground.count);
+#endif
 }
 
 - (void) prepareLogic {

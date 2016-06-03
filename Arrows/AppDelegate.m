@@ -20,7 +20,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [Fabric with:@[[Crashlytics class]]];
+    [Fabric with:@[[Crashlytics class], [Answers class]]];
     // Let user enjoy the beautiful spash screen for a while.
     [NSThread sleepForTimeInterval:3];
     return YES;

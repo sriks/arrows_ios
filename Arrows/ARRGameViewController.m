@@ -9,6 +9,7 @@
 #import "ARRGameViewController.h"
 #import "ARRPlaygroundViewController.h"
 #import "ARRJoystickViewController.h"
+#import "ARRAnalytics.h"
 
 const int PLAYGROUND_PERCENTAGE         =   70;
 
@@ -115,12 +116,14 @@ const int PLAYGROUND_PERCENTAGE         =   70;
 - (void)didEndGame:(ARRGameLogic *)logic {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self performSegueWithIdentifier:@"gameover" sender:logic];
+    [ARRAnalytics logGameEndWithScore:logic.points bestScore:logic.bestScore];
 }
 
 #pragma mark - ARRGameOverDelegate
 
 - (void)didSelectPlayagain {
     [self preparePlaygroundAndStartGame];
+    [ARRAnalytics logPlayAgainEvent];
 }
 
 @end
