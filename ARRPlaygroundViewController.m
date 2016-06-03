@@ -89,6 +89,7 @@ const float FLASH_ANIM_DURATION                       =       1;
 
 - (void)resumePlaygroundWithCompletionBlock:(ARRPreparePlaygroundCompletionBlock)block {
     [self initiateCountdownTime:3 withCompletionBlock:block];
+    self.totalPointsLabel.hidden = NO;
 }
 
 - (void)setupViews {
@@ -135,12 +136,14 @@ const float FLASH_ANIM_DURATION                       =       1;
     [self.firstHalfPath moveToPoint:pointAt12OClock];
     self.firstHalfPath = [UIBezierPath bezierPathWithArcCenter:self.view.center radius:(viewWidth/2)-(width/2) startAngle:degreesToRadians(-90) endAngle:degreesToRadians(-89) clockwise:NO];
     
+    self.totalPointsLabel.hidden = YES;
     self.didSetupViews = YES;
 }
 
 #pragma mark ARRPlaygroundControlProtocol
 
 - (void)startAnimatingArrowView:(ARRArrowView*)arrowView {
+    self.totalPointsLabel.hidden = NO;
     CGRect newArrowRect = arrowView.frame;
     newArrowRect.origin = self.originatorView.frame.origin;
     arrowView.frame = newArrowRect;
@@ -190,8 +193,14 @@ const float FLASH_ANIM_DURATION                       =       1;
 }
 
 - (void)didScorePoints:(int)points withTotalPoints:(int)totalPoints {
-    self.totalPointsLabel.text = [NSString stringWithFormat:@"%d",totalPoints];
-    [self.totalPointsLabel sizeToFit];
+    [UIView transitionWithView:self.totalPointsLabel
+                      duration:.5f
+                       options:UIViewAnimationOptionCurveEaseInOut |
+                               UIViewAnimationOptionTransitionCrossDissolve
+                    animations:^{
+                        self.totalPointsLabel.text = [NSString stringWithFormat:@"%d",totalPoints];
+                        [self.totalPointsLabel sizeToFit];
+                    } completion:nil];
     [self animatePointsWon:points];
 }
 
@@ -199,8 +208,6 @@ const float FLASH_ANIM_DURATION                       =       1;
                               precentage:(float)remaingLifePercentage {
     const float lifeWidth = [ARRUtils percentageOfPercent:remaingLifePercentage
                                                   inTotal:(CGRectGetWidth(self.view.frame))];
-    
-    //(CGRectGetWidth(self.view.frame) * remaingLifePercentage)/100;
     UIColor* color = [self colorForLifeLevel:remaingLife];
     [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
         CGRect newFrame = self.lifeLevel.frame;
@@ -215,6 +222,7 @@ const float FLASH_ANIM_DURATION                       =       1;
 
 - (void)didEndGame:(int)points {
     self.totalPointsLabel.text = @"0";
+    self.totalPointsLabel.hidden = YES;
 }
 
 #pragma mark Private
