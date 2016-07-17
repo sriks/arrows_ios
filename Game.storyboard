@@ -73,9 +73,7 @@
                     <connections>
                         <outlet property="joystickHeightConstraint" destination="9US-Qj-UCc" id="erJ-WW-M43"/>
                         <outlet property="playgroundHeightConstraint" destination="6g2-Ly-0po" id="JVf-ql-O03"/>
-                        <segue destination="n04-9h-jlK" kind="popoverPresentation" identifier="gameover" popoverAnchorView="Bc4-dX-GDq" id="GdR-WB-cxX">
-                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                        </segue>
+                        <segue destination="n04-9h-jlK" kind="show" identifier="gameover" id="GdR-WB-cxX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UJb-fY-fcw" userLabel="First Responder" sceneMemberID="firstResponder"/>
