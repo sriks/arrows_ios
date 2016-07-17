@@ -34,6 +34,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [self startArrowAnimation];
+    [super viewWillAppear:animated];
 }
 
 - (IBAction)onPlayAgainClicked:(id)sender {
@@ -48,7 +49,7 @@
 }
 
 - (IBAction)onSpreadTheWordClicked:(id)sender {
-    NSArray* shareItems = @[@"Loved the Arrows game! Give it a spin ", @""];
+    NSArray* shareItems = @[@"Loved the Arrows game. Give it a spin! https://itunes.apple.com/us/app/arrows/id1030870310?ls=1&mt=8", @""];
     UIActivityViewController* activity = [[UIActivityViewController alloc] initWithActivityItems:shareItems applicationActivities:nil];
     [self presentViewController:activity animated:YES completion:nil];
     [ARRAnalytics logShareEvent];

@@ -62,6 +62,7 @@ const float FLASH_ANIM_DURATION                       =       1;
     if (!self.didSetupViews) {
         [self setupViews];
     }
+    [super viewDidAppear:animated];
 }
 
 - (IBAction)onDismissTutorial:(id)sender {
