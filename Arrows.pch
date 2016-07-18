@@ -15,12 +15,14 @@
 #import "ARRConstants.h"
 
 #ifdef DEBUG
-
+// Debug
 /*!
  Quickly test game over scenario.
  */
 //#define TEST_QUICK_GAME_OVER
 
-#endif // End of DEBUG
+#endif
+// Release
+#define NSLog(...) /* suppress NSLog when in release mode */
 
 #endif

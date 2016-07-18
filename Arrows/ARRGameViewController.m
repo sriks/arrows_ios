@@ -93,9 +93,11 @@ const int PLAYGROUND_PERCENTAGE         =   70;
 }
 
 - (void)appWillEnterForeground {
-    NSLog(@"appWillEnterForeground");
     [self.playgroundVC resumePlaygroundWithCompletionBlock:^{
-        [self.gameLogic resumeGame];
+        // If app goes to background during countdown.
+        if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
+            [self.gameLogic resumeGame];
+        }
     }];
 }
 

@@ -234,6 +234,7 @@ typedef enum : NSInteger {
                 [gameEventsListener performSelector:@selector(didEndGame:)
                                          withObject:self
                                          afterDelay:1];
+                [self.playground didEndGame:self.points];
                 break;
             }
 
