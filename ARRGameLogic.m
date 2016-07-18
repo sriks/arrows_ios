@@ -79,12 +79,16 @@ typedef enum : NSInteger {
     return theLogic;
 }
 
++ (NSKeyValueObservingOptions)preferredKeyValueObservingOptions {
+    return NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld;
+}
+
 - (instancetype)init {
     self = [super init];
     if (self) {
         for (NSString* keyPath in sStateChangeProperties) {
             [self addObserver:self forKeyPath:keyPath
-                      options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
+                      options:[ARRGameLogic preferredKeyValueObservingOptions] context:nil];
         }
         self.arrowsInPlayground = [NSMutableArray array];
         [self prepareLogic];
@@ -209,16 +213,21 @@ typedef enum : NSInteger {
             case ARRGameStateStopped: {
                 // Game over
                 if (![change[NSKeyValueChangeOldKey] isEqual:@(ARRGameStatePaused)]) {
-                    // When stopped the state transitions from paused to stopped.
+                    // When stopped the state transitions from paused to stopped. This cleans up the arrows.
+                    // We silence KVO so that the same state change is not observed.
                     self.state = ARRGameStatePaused;
+                    [self removeObserver:self forKeyPath:keyPath];
                     self.state = ARRGameStateStopped;
+                    [self addObserver:self
+                           forKeyPath:keyPath
+                              options:[ARRGameLogic preferredKeyValueObservingOptions]
+                              context:nil];
                 }
                 
                 if (self.bestScore < self.points) {
                     self.bestScore = self.points;
                     [self updateBestScoreToUserDefaults:self.bestScore];
                 }
-                [self.playground didEndGame:self.points];
                 id gameEventsListener = self.gameEventsDelegate;
                 [self.playground showFlash:@"GAME OVER" positive:NO];
                 // Send this message after a delay so that the flash is shown to user.
