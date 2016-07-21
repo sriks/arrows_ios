@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Deviceworks. All rights reserved.
 //
 
+@import MessageUI;
 #import "ARRGameOverViewController.h"
 #import "ARRArrowView.h"
 #import "UIButton+ARRAdditions.h"
@@ -13,6 +14,7 @@
 
 @interface ARRGameOverViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *playAgainButton;
+@property (weak, nonatomic) IBOutlet UIButton *sendFeedbackButton;
 @property (weak, nonatomic) IBOutlet UILabel *pointsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bestScoreLabel;
 @end
@@ -34,8 +36,19 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [self startArrowAnimation];
+    if (![[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"mailto:a@a.com"]]) {
+        self.sendFeedbackButton.hidden = YES;
+    } else {
+        self.sendFeedbackButton.hidden = NO;
+    }
     [super viewWillAppear:animated];
 }
+
+- (BOOL)prefersStatusBarHidden {
+    return YES;
+}
+
+#pragma mark Private
 
 - (IBAction)onPlayAgainClicked:(id)sender {
     if (self.presentingViewController) {
@@ -55,8 +68,13 @@
     [ARRAnalytics logShareEvent];
 }
 
-- (BOOL)prefersStatusBarHidden {
-    return YES;
+- (IBAction)onSendFeedbackClicked:(id)sender {
+    NSDictionary *infoDictionary = [[NSBundle mainBundle]infoDictionary];
+    NSString *version = infoDictionary[@"CFBundleShortVersionString"];
+    NSString* encodedString = [NSString stringWithFormat:@"subject=Feedback - Arrows - %@",version];
+    encodedString = [encodedString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
+    NSString* mailto = [NSString stringWithFormat:@"mailto:%@?%@", @"hello.deviceworks@gmail.com", encodedString];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:mailto]];
 }
 
 - (void)startArrowAnimation {

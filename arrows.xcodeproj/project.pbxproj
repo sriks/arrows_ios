@@ -24,6 +24,7 @@
 		AD1C88D01B75103500C06017 /* left.png in Resources */ = {isa = PBXBuildFile; fileRef = AD1C88CB1B75103500C06017 /* left.png */; };
 		AD1C88D11B75103500C06017 /* right.png in Resources */ = {isa = PBXBuildFile; fileRef = AD1C88CC1B75103500C06017 /* right.png */; };
 		AD1C88D21B75103500C06017 /* top.png in Resources */ = {isa = PBXBuildFile; fileRef = AD1C88CD1B75103500C06017 /* top.png */; };
+		AD26318A1D40A0E300959C5F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD2631891D40A0E300959C5F /* MessageUI.framework */; };
 		AD3174C61D01665E000D5F1A /* ARRAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3174C51D01665E000D5F1A /* ARRAnalytics.m */; };
 		AD78B6DA1B4FE5DA001A1AFD /* ARRKeyFrameAnimationCompletionListener.m in Sources */ = {isa = PBXBuildFile; fileRef = AD78B6D91B4FE5DA001A1AFD /* ARRKeyFrameAnimationCompletionListener.m */; };
 		AD78B6E81B5106D6001A1AFD /* ARRJoystickViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD78B6E71B5106D6001A1AFD /* ARRJoystickViewController.m */; };
@@ -74,6 +75,7 @@
 		AD1C88CB1B75103500C06017 /* left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left.png; sourceTree = "<group>"; };
 		AD1C88CC1B75103500C06017 /* right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right.png; sourceTree = "<group>"; };
 		AD1C88CD1B75103500C06017 /* top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top.png; sourceTree = "<group>"; };
+		AD2631891D40A0E300959C5F /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		AD3174C41D01665E000D5F1A /* ARRAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARRAnalytics.h; sourceTree = "<group>"; };
 		AD3174C51D01665E000D5F1A /* ARRAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARRAnalytics.m; sourceTree = "<group>"; };
 		AD78B6D81B4FE5DA001A1AFD /* ARRKeyFrameAnimationCompletionListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARRKeyFrameAnimationCompletionListener.h; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD26318A1D40A0E300959C5F /* MessageUI.framework in Frameworks */,
 				AD0CA4A31CFE906800C93D12 /* Crashlytics.framework in Frameworks */,
 				AD0CA4A21CFE906800C93D12 /* Fabric.framework in Frameworks */,
 			);
@@ -118,6 +121,7 @@
 		AD0258A11B4E7D9900E655FF = {
 			isa = PBXGroup;
 			children = (
+				AD2631891D40A0E300959C5F /* MessageUI.framework */,
 				AD0CA4A01CFE906800C93D12 /* Fabric.framework */,
 				AD0CA4A11CFE906800C93D12 /* Crashlytics.framework */,
 				AD0258AC1B4E7D9900E655FF /* Arrows */,
@@ -547,7 +551,7 @@
 				);
 				GCC_PREFIX_HEADER = Arrows.pch;
 				INFOPLIST_FILE = Arrows/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.deviceworks.arrows;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -568,7 +572,7 @@
 				);
 				GCC_PREFIX_HEADER = Arrows.pch;
 				INFOPLIST_FILE = Arrows/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.deviceworks.arrows;
 				PRODUCT_NAME = "$(TARGET_NAME)";

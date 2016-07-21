@@ -21,8 +21,11 @@
  */
 //#define TEST_QUICK_GAME_OVER
 
-#endif
+#else
+
 // Release
 #define NSLog(...) /* suppress NSLog when in release mode */
+
+#endif
 
 #endif
