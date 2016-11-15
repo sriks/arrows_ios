@@ -25,7 +25,6 @@ xcuserdata
 *.xcscmblueprint
 
 ## Sensitive data
-Info.plist
 
 ## Obj-C/Swift specific
 *.hmap
