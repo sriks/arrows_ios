@@ -122,15 +122,7 @@ const float FLASH_ANIM_DURATION                       =       1;
     
     // Create movement path
     const float viewWidth  = CGRectGetWidth(self.view.bounds);
-    const float viewHeight = CGRectGetHeight(self.view.bounds);
-    
     CGPoint pointAt12OClock = self.originatorView.center;
-    CGPoint pointAt6OClock = CGPointMake((CGRectGetWidth(self.view.bounds)/2) - (width/2),
-                                      CGRectGetHeight(self.view.bounds) - (width/2));
-    CGPoint pointAt9OClock = CGPointMake(-width, CGRectGetHeight(self.view.bounds)/2);
-    CGPoint rightControlPoint = CGPointMake(CGRectGetWidth(self.view.bounds) + (width), CGRectGetHeight(self.view.bounds)/2);
-    CGPoint pointAt3OClock = CGPointMake(viewWidth + width, viewHeight/2);
-    CGPoint pointAt1OClock = CGPointMake(viewWidth-width, (pointAt3OClock.y - CGRectGetHeight(originatorFrame))/2);
     
     // First half path
     self.firstHalfPath = [UIBezierPath bezierPath];
