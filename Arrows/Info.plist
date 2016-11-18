@@ -27,7 +27,7 @@
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
-		<string>place-fabric-key-here</string>
+		<string>place-key-here</string>
 		<key>Kits</key>
 		<array>
 			<dict>

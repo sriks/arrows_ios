@@ -6,6 +6,7 @@ DerivedDat
 
 ## Othera
 .DS_Store*
+./Arrows/.DS_Store*
 
 ## Various settings
 *.pbxuser

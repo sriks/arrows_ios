@@ -1,0 +1,30 @@
+{
+  "default": {
+    "keyword": {
+      "fonts": [
+      ]
+    },
+    "title": {
+      "fonts": [
+      ],
+      "color": "#545454"
+    },
+    "background": "./background.jpg",
+    "padding": 50
+  },
+
+  "data": [
+    {
+      "filter": "Simple",
+      "keyword": {
+        "color": "#d21559"
+      }
+    },
+    {
+      "filter": "Game",
+      "keyword": {
+        "color": "#d21559"
+      }
+    }
+  ]
+}
